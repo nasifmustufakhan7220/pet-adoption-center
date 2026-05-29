@@ -149,7 +149,7 @@
           at its layout. The point of using Lorem Ipsum is that it has a.
         </p>
 
-        <button class="btn">Responsive</button>
+        <button class="btn text-[#FFFFFF] font-bold bg-[#0E7A81]">View More</button>
         <img src="./images/pet.webp" alt="" srcset="" />
       </div>
     </section>
@@ -185,29 +185,32 @@
     <section class="mb-10">
 
 
-  <div class="flex flex-col gap-2 sm:flex-row justify-between items-center px-5 sm:px-10 md:px-20 lg:px-28">
-    <p class="text-[rgba(19,19,19,100%)] font-black">Best Deal For you</p>
-    <button class="btn bg-teal-600 rounded-xl text-[#FFFFFF] font-bold btn-sm md:btn-md hover:bg-teal-800">
-      Sort by Price
-    </button>
-  </div>
+      <div class="flex flex-col gap-2 sm:flex-row justify-between items-center px-5 sm:px-10 md:px-20 lg:px-28">
+        <p class="text-[rgba(19,19,19,100%)] font-black">Best Deal For you</p>
+        <button id="shortByPrice" onclick="allPets()" class="btn bg-teal-600 rounded-xl text-[#FFFFFF] font-bold btn-sm md:btn-md hover:bg-teal-800">
+          Sort by Price
+        </button>
+        
+      </div>
 
-  <!-- Main Content -->
-  <div class="flex flex-col lg:flex-row gap-5 px-5 sm:px-10 md:px-20 lg:px-28 py-5 items-start w-full">
-  <div id="card-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 flex-1 w-full">
-    </div>
+      <div class="flex flex-col lg:flex-row gap-5 px-5 sm:px-10 md:px-20 lg:px-28 py-5 items-start w-full">
+        <div id="card-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 flex-1 w-full"></div>
 
-  <!-- images -->
-    <div id="image-container" class="grid grid-cols-2 gap-2 w-full lg:w-48 xl:w-64">
-    </div>
-
-  </div>
-</section>
+          <div id="short-spinnerId" class="flex justify-center items-center flex-1 min-h-60 hidden">
+              <span class="loading loading-bars loading-xs"></span>
+              <span class="loading loading-bars loading-sm"></span>
+              <span class="loading loading-bars loading-md"></span>
+              <span class="loading loading-bars loading-lg"></span>
+              <span class="loading loading-bars loading-xl"></span>
+        </div>
+        <div id="image-container" class="grid grid-cols-2 gap-2 w-full lg:w-48 xl:w-64">
+        </div>
+      </div>
+    </section>
 
     <!-- Dealing section End -->
 
     <!-- Footer Section -->
-
     <section>
       <div
         class="flex gap-8 flex-col sm:flex-row justify-between items-start text-neutral-content bg-neutral py-20 px-28"
@@ -377,6 +380,29 @@
       </div>
     </section>
     <!-- Footer Section End-->
+
+
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box flex flex-col">
+
+        <div id="modal-spinnerId" class="flex justify-center items-center flex-1 min-h-60 hidden">
+          <span class="loading loading-bars loading-xs"></span>
+          <span class="loading loading-bars loading-sm"></span>
+          <span class="loading loading-bars loading-md"></span>
+          <span class="loading loading-bars loading-lg"></span>
+          <span class="loading loading-bars loading-xl"></span>
+        </div>
+
+        <div id="modal-container" class="space-y-5"></div>
+
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+
+      </div>
+    </dialog>
 
     <!-- Js -->
     <script src="./Script/script.js"></script>
