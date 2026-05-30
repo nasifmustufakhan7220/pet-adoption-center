@@ -8,6 +8,7 @@ const spinner = (bool, id1, id2) =>{
     document.getElementById(id1).classList.add("hidden");
   }
 }
+
 // Common Function End
 
 
@@ -103,6 +104,24 @@ const displayCatagoriesBtn = (categories) => {
 const displayCategoryByPet = (cards) => {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
+  if(cards.length === 0){
+    const div = document.createElement("div");
+    div.classList.add("col-span-full");
+    div.innerHTML = `
+    <div class="relative">
+    <img src="./images/error.webp" alt="" srcset="" />
+  </div>
+
+  <!-- Text -->
+  <h2 class="font-black text-2xl text-gray-800 mt-4">No Information Available</h2>
+  <p class="text-sm text-gray-500 text-center max-w-sm">
+    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.
+  </p>
+    `;
+    cardContainer.append(div);
+    spinner(false, "short-spinnerId", "card-container");
+    return;
+  }
   cards.forEach((card) => {
     const cardDiv = document.createElement("div");
     cardDiv.innerHTML = `
@@ -136,7 +155,7 @@ const displayCategoryByPet = (cards) => {
             <path d="M5.625 2.5V4.375M14.375 2.5V4.375M2.5 15.625V6.25C2.5 5.75272 2.69754 5.27581 3.04917 4.92417C3.40081 4.57254 3.87772 4.375 4.375 4.375H15.625C16.1223 4.375 16.5992 4.57254 16.9508 4.92417C17.3025 5.27581 17.5 5.75272 17.5 6.25V15.625M17.5 15.625V9.375C17.5 8.87772 17.3025 8.40081 16.9508 8.04917C16.5992 7.69754 16.1223 7.5 15.625 7.5H4.375C3.87772 7.5 3.40081 7.69754 3.04917 8.04917C2.69754 8.40081 2.5 8.87772 2.5 9.375V15.625C2.5 16.1223 2.69754 16.5992 3.04917 16.9508C3.40081 17.3025 3.87772 17.5 4.375 17.5H15.625C16.1223 17.5 16.5992 17.3025 16.9508 16.9508C17.3025 16.5992 17.5 16.1223 17.5 15.625Z" stroke="#5A5A5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
 
-            Birth: ${card.date_of_birth}
+            Birth: ${card.date_of_birth? card.date_of_birth : "not mentioned"}
           </p>
           <p class="text-xs sm:text-sm text-gray-600 flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -153,7 +172,7 @@ const displayCategoryByPet = (cards) => {
             </defs>
             </svg>
 
-            Gender: ${card.gender}
+            Gender: ${card.gender? card.gender : "Not mentioned"}
           </p>
           <p class="text-xs sm:text-sm text-gray-600 flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +187,7 @@ const displayCategoryByPet = (cards) => {
             </defs>
             </svg>
 
-            Price: ${card.price}$
+            Price: ${card.price === null || card.price === undefined? "not mentioned": card.price}$
           </p>
         </div>
         <div class="flex items-center gap-2 border-t border-gray-100 pt-2 w-full">
